@@ -1,9 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:todoappflutter/widgets/task_list.dart';
+import 'package:todoappflutter/screens/add_task_screen.dart';
 
 class TaskScreen extends StatelessWidget {
   @override
@@ -13,7 +12,10 @@ class TaskScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightGreen,
         child: Icon(Icons.add),
-        onPressed: null,
+        onPressed: () {
+          showBottomSheet(
+              context: context, builder: (context) => AddTaskScreen());
+        },
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
