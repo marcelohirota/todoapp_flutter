@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todoappflutter/widgets/task_list.dart';
 import 'package:todoappflutter/screens/add_task_screen.dart';
+import 'package:todoappflutter/widgets/task_list.dart';
 
 class TaskScreen extends StatelessWidget {
   @override
