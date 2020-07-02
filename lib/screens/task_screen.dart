@@ -3,16 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todoappflutter/widgets/task_list.dart';
 import 'package:todoappflutter/screens/add_task_screen.dart';
-import 'package:todoappflutter/models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:todoappflutter/models/task_data.dart';
 
-class TaskScreen extends StatefulWidget {
-  @override
-  _TaskScreenState createState() => _TaskScreenState();
-}
-
-class _TaskScreenState extends State<TaskScreen> {
-  List<Task> tasks = [];
-
+class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,9 +23,9 @@ class _TaskScreenState extends State<TaskScreen> {
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: AddTaskScreen((newTaskTitle) {
-                  setState(() {
-                    tasks.add(Task(name: newTaskTitle));
-                  });
+//                  setState(() {
+//                    tasks.add(Task(name: newTaskTitle));
+//                  });
                   Navigator.pop(context);
                 }),
               ),
@@ -73,7 +67,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   ),
                 ),
                 Text(
-                  '12 tasks',
+                  "${Provider.of<TaskData>(context).taskCount} tasks",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.0,
@@ -92,7 +86,7 @@ class _TaskScreenState extends State<TaskScreen> {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: TaskList(tasks),
+              child: TaskList(),
             ),
           ),
         ],
